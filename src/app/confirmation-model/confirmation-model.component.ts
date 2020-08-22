@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-confirmation-model',
+  selector: 'app-confirmation-modal',
   templateUrl: './confirmation-model.component.html',
   styleUrls: ['./confirmation-model.component.css']
 })
-export class ConfirmationModelComponent implements OnInit {
+export class ConfirmationModalComponent implements OnInit {
 
   modalInstance: NgbModalRef;
 

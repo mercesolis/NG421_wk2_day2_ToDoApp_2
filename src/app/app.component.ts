@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ITodo } from './interfaces/itodo';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from './confirmation-model/confirmation-model.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,9 @@ export class AppComponent {
   todoList: ITodo [] = [];
   todoTitle: string;
 
+  constructor(private modalService: NgbModal) {
+
+  }
   ngOnInit(): void {
     this.todoTitle = '';
     this.todoList = [
@@ -32,9 +37,23 @@ export class AppComponent {
   }
 
 
-  deleteTodo(todo:ITodo) {
-    const index = this.todoList.findIndex(todoItem => todoItem === todo);
-    this.todoList.splice(index, 1);
+  async deleteTodo(todo: any) {
+    const modal = this.modalService.open(ConfirmationModalComponent);
+    modal.componentInstance.modalInstance = modal;
+
+    try 
+    {
+      const answer = await modal.result;
+    }
+    catch(error)
+    {
+      console.log('modal did not return anything');
+    }
+    const answer = await modal.result;
+    if(answer === 'yes'){
+      const index = this.todoList.findIndex(todoItem => todoItem === todo);
+      this.todoList.splice(index, 1);
+    }
   }
 
 }
