@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-confirmation-model',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationModelComponent implements OnInit {
 
+  modalInstance: NgbModalRef;
+
   constructor() { }
 
   ngOnInit() {
+    
+  }
+
+  close(): void {
+    this.modalInstance.close('no');
+  }
+
+  yes(): void {
+    this.modalInstance.close('yes');
   }
 
 }
