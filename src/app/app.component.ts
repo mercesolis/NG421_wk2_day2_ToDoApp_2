@@ -12,6 +12,13 @@ export class AppComponent {
   todoList: ITodo [] = [];
   todoTitle: string;
 
+  ngOnInit(): void {
+    this.todoTitle = '';
+    this.todoList = [
+      { title: 'School work', id: 1, description: "todolist2"}
+    ];
+  }
+
   addTodo():void {
     this.todoList.push({
       id: this.todoId,
