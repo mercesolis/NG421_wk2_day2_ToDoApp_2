@@ -5,7 +5,7 @@
         <div class="view">
             <div *ngIf="!todo.editing; else editingTodo" class="todoTitle" (dblclick)= "editTodo(todo)"> {{todo.title}}</div>
             <ng-template #editingTodo>
-                <input type="text" class="todo-item-edit" [(ngModel)] ="todo.title">
+                <input type="text" class="todo-item-edit" [(ngModel)] ="todo.title" autofocus>
             </ng-template>
         </div>
             <div class="float-right">
