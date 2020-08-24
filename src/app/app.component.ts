@@ -20,20 +20,36 @@ export class AppComponent {
   ngOnInit(): void {
     this.todoTitle = '';
     this.todoList = [
-      { title: 'School work', id: 1, description: "todolist2"}
+      { 
+        title: 'School work', 
+        id: 1, 
+        description: "todolist2",
+        'completed': false,
+        'editing': false
+        
+      }
     ];
   }
 
   addTodo():void {
+    if(this.todoTitle.trim().length === 0) {
+      return;
+    }
     this.todoList.push({
       id: this.todoId,
       title: this.todoTitle,
-      description: ''
+      description: '',
+      'completed': false,
+      'editing': false
     });
   
     this.todoTitle = '';
     this.todoId++;
   
+  }
+
+  editTodo(todo: any): void {
+    todo.editing = true;
   }
 
 
