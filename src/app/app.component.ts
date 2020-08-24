@@ -48,7 +48,7 @@ export class AppComponent {
   
   }
 
-  editTodo(todo: any): void {
+  editTodo(todo: ITodo): void {
     todo.editing = true;
   }
 

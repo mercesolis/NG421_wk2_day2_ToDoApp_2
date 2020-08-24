@@ -3,12 +3,15 @@
 <ul align="center" class="list-group">
     <li class="list-group-item" *ngFor="let todo of todoList">
         <div class="view">
-            <div class="todoTitle" (dblclick)= "editTodo(todo)"> {{todo.title}}</div>
-            <input type="text" class="todo-item-edit" [(ngModel)] ="todo.title">
+            <div *ngIf="!todo.editing; else editingTodo" class="todoTitle" (dblclick)= "editTodo(todo)"> {{todo.title}}</div>
+            <ng-template #editingTodo>
+                <input type="text" class="todo-item-edit" [(ngModel)] ="todo.title">
+            </ng-template>
+        </div>
             <div class="float-right">
                 <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button>
             </div>
-        </div>
+        
     </li>
 </ul>
 
